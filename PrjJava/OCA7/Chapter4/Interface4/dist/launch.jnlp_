@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jnlp codebase="file:/D:/PrjJava/Interface4/dist/" href="launch.jnlp" spec="1.0+">
+    <information>
+        <title>Interface4</title>
+        <vendor>andad</vendor>
+        <homepage href=""/>
+        <description>Interface4</description>
+        <description kind="short">Interface4</description>
+        
+        
+    </information>
+    <update check="always"/>
+    
+    <resources>
+        <j2se version="1.7+"/>
+        <jar href="Interface4.jar" main="true"/>
+        
+        
+    <jar href="lib/game.jar"/>
+</resources>
+    <applet-desc height="300" main-class="" name="Interface4" width="300">
+        
+    </applet-desc>
+</jnlp>
