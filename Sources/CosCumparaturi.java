@@ -5,8 +5,6 @@ package contentspeed;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 import junit.framework.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -21,13 +19,13 @@ public class CosCumparaturi extends AbstractPage {
     By telefon = By.xpath("//*[@id=\"phone\"]");
     By nume = By.xpath("//*[@id=\"lastname\"]");
 
-    By email = By.xpath("//*[@id=\"customer\"]/div[2]/div[1]/input");
+    By email = By.xpath("//*[@id='customer']/div[2]/div[1]/input");
 
     By persoanaFizica = By.xpath("//*[@id='customer-type']/div/label[1]/span");
 
     By delivery = By.xpath("//*[@id='delivery']/label/span");
 
-    By termeni = By.xpath("//*[@id=\"terms\"]");
+    By termeni = By.xpath("//*[@id='terms']");
 
     By btnFinalizeaza = By.xpath("//*[@id='finish-order']");
 
@@ -48,6 +46,9 @@ public class CosCumparaturi extends AbstractPage {
 
     public CosCumparaturi(WebDriver driver) {
         super(driver);
+        JavascriptExecutor js = ((JavascriptExecutor) driver);
+
+        js.executeScript("window.scrollTo(0, 1000)");
     }
 
     void CompleteazaPrenume(String param) {
