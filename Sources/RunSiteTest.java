@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class RunSiteTest {
 
@@ -23,31 +24,39 @@ public class RunSiteTest {
 
         try {
 
-            System.setProperty("webdriver.chrome.driver", "D:\\Proiecte\\selenium-java-2.47.1\\selenium-2.47.1\\chromedriver_win32\\chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", "D:\\Documentatie\\Selenium\\ChromeDriver\\chromedriver234.exe");
 
-            ChromeOptions options = new ChromeOptions();
+            ChromeOptions optionsChrome = new ChromeOptions();
 
-            options.addArguments("--start-maximized");
+            optionsChrome.addArguments("--start-maximized");
 
-            driver = new ChromeDriver(options);
+            DesiredCapabilities caps = new DesiredCapabilities();
+            caps.setCapability("browser", "Chrome");
+            caps.setCapability("chrome.switches", "--start-maximized");
+
+            caps.setCapability("os", "Windows");
+            caps.setCapability("os_version", "10");
+            caps.setCapability("resolution", "1366x768");
+            caps.setCapability(ChromeOptions.CAPABILITY, optionsChrome);
+
+            driver = new ChromeDriver(caps);
 
             driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
-            driver.get(Constants.URLRoot);
+            driver.get(Constants.URLProdus);
 
             objProdus = new ProdusCeai(driver);
+            
 
-            objProdus.Actions("Anda", "Cristea", "andadeacu2@yahoo.com", "0741010736", "observatii test      ", "Bucuresti", "Bucuresti", "strada Fericirii nr. 9");
+            objProdus.Actions("Anda", "Cristea", "andadeacu2@yahoo.com", "0741010736", "Bucuresti", "Bucuresti", "strada Fericirii nr. 9", "observatii test      ");
 
-     
-
-            driver.quit();
+            //driver.quit();
 
         } catch (WebDriverException ex) {
 
             ex.printStackTrace();
 
-            driver.quit();
+            //driver.quit();
 
         }
     }

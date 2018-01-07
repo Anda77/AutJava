@@ -5,8 +5,8 @@ package contentspeed;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import static contentspeed.AbstractPage.driver;
-import junit.framework.Assert;
+
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -26,37 +26,41 @@ public class ProdusCeai extends AbstractPage {
     By acordCookie = By.xpath("//*[@id='cookie-bar']");
 
     By prenume = By.xpath("//*[@id=\"cart-element-4\"]");
-    By telefon = By.xpath("//*[@id=\"phone\"]");
-    
-    
+    By telefon = By.xpath("//*[@id='cart-element-7']");
+
     By nume = By.xpath("//*[@id='cart-element-5']");
 
-    By email = By.xpath("//*[@id=\"customer\"]/div[2]/div[1]/input");
+    By email = By.xpath("//*[@id='cart-element-6']");
 
     By persoanaFizica = By.xpath("//*[@id='customer-type']/div/label[1]/span");
 
     By delivery = By.xpath("//*[@id='delivery']/label/span");
 
-    By termeni = By.xpath("//*[@id=\"terms\"]");
+    By termeni = By.xpath("//*[@id='cart-element-24-0']");
 
-    By btnFinalizeaza = By.xpath("//*[@id='finish-order']");
+    // By btnFinalizeaza = By.xpath("//*[@id='finish-order']"); -- armonia naturii
+    By btnFinalizeaza = By.xpath("//*[@id='cart']/fieldset/div[5]/div[14]/button");
+    
+    //By btnFinalizeaza = By.partialLinkText(Constants.btnComanadaFinalizata);
 
-    By observatii = By.xpath("//*[@id='cartForm']/div/div[6]/div[3]/div/textarea");
+    By observatii = By.xpath(" //*[@id=\"cart-element-23\"]");
 
-    By modPlata = By.xpath("//*[@id=\"ui-id-3-button\"]/span[2]");
+    By modPlata = By.xpath("//*[@id='ui-id-3-button']/span[2]");
 
-    By judet = By.xpath("//*[@id='county']");
+    //*[@id="cart-element-19"]
+    By judet = By.xpath("//*[@id='cart-element-19']");
 
-    By oras = By.xpath("//*[@id='city']");
+    By oras = By.xpath("//*[@id='cart-element-18']");
 
-    By adresa = By.xpath("//*[@id=\"streetaddress\"]");
+    By adresa = By.xpath("//*[@id='cart-element-20']");
 
-    By comandaFinalizata = By.xpath("//*[@id=\"middle-column\"]/h1");
+    By comandaFinalizata = By.xpath("//*[@id='middle-column']/h1");
 
     By errorDuplicateEmail = By.xpath("//*[@id='customer']/div[3]");
 
     public ProdusCeai(WebDriver driver) {
         super(driver);
+
     }
 
     void CompleteazaPrenume(String param) {
@@ -113,7 +117,9 @@ public class ProdusCeai extends AbstractPage {
 
     public void CompleteazaAdresa(String judet1, String oras1, String adresa1) {
         driver.findElement(judet).sendKeys(judet1);
-        //driver.findElement(oras).isEnabled(); sometimes don't work
+        driver.findElement(oras).isEnabled();
+        //sometimes don't work
+        // tb sa fac refresh la oras in functie de judet 
         driver.findElement(oras).sendKeys(Keys.ENTER);
         driver.findElement(oras).sendKeys(oras1);
         driver.findElement(adresa).sendKeys(adresa1);
@@ -124,7 +130,7 @@ public class ProdusCeai extends AbstractPage {
         WebElement elementtobeClicked = driver.findElement(btnFinalizeaza);
 
         JavascriptExecutor jsDriver = (JavascriptExecutor) driver;
-        jsDriver.executeScript("arguments[0].scrollIntoView(false);", elementtobeClicked);
+        //jsDriver.executeScript("arguments[0].scrollIntoView(false);", elementtobeClicked);
 
         jsDriver.executeScript("arguments[0].click();", elementtobeClicked);
 
@@ -146,19 +152,23 @@ public class ProdusCeai extends AbstractPage {
         }
         return result;
     }
+    
+    public String getResult()
+    {
+        return driver.findElement(comandaFinalizata).getText();
+    }
 
-    public void Completeaza(String prenume, String nume, String email, String telefon, String observatii, String judet, String oras, String adresa) {
+    public void Completeaza(String prenume, String nume, String email, String telefon, String judet, String oras, String adresa, String observatii) {
 
         try {
 
-            JavascriptExecutor js = ((JavascriptExecutor) driver);
-            js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
             CompleteazaPrenume(prenume);
             CompleteazaNume(nume);
             CompleteazaEmail(email);
             CompleteazaTelefon(telefon);
-            CompleteazaObservatii(observatii);
+
             CompleteazaAdresa(judet, oras, adresa);
+            CompleteazaObservatii(observatii);
             //selectPlata(plata);
             //findPF();
             //findDelivery();
@@ -169,7 +179,7 @@ public class ProdusCeai extends AbstractPage {
 
                 System.out.println(driver.findElement(comandaFinalizata).getText());
 
-                Assert.assertEquals("Comanda finalizata", driver.findElement(comandaFinalizata).getText());
+                
 
                 //System.out.println("check if message is displayed: " + driver.findElement(comandaFinalizata).isDisplayed());
             }
@@ -184,6 +194,8 @@ public class ProdusCeai extends AbstractPage {
     public void clickAdaugaCos() {
 
         WebElement elementtobeClicked = driver.findElement(produsArmonia);
+        
+        Assert.assertTrue(elementtobeClicked.isDisplayed());
 
         JavascriptExecutor jsDriver = (JavascriptExecutor) driver;
         jsDriver.executeScript("arguments[0].scrollIntoView(false);", elementtobeClicked);
@@ -230,17 +242,23 @@ public class ProdusCeai extends AbstractPage {
 
     }
 
-    public void Actions(String prenume, String nume, String email, String telefon, String observatii, String judet, String oras, String adresa) {
+    public void Actions(String prenume, String nume, String email, String telefon, String judet, String oras, String adresa, String observatii) {
         closeCookie();
         clickAdaugaCos();
         clickFinalizeaza();
+
+        JavascriptExecutor js = ((JavascriptExecutor) driver);
+
+        js.executeScript("window.scrollTo(0, 500)");
 
         CompleteazaPrenume(prenume);
         CompleteazaNume(nume);
         CompleteazaEmail(email);
         CompleteazaTelefon(telefon);
-        CompleteazaObservatii(observatii);
         CompleteazaAdresa(judet, oras, adresa);
+
+        CompleteazaObservatii(observatii);
+        js.executeScript("window.scrollTo(0, 500)");
         //selectPlata(plata);
         //findPF();
         //findDelivery();

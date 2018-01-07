@@ -5,7 +5,6 @@ package contentspeed;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import static contentspeed.AbstractPage.driver;
 import junit.framework.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
