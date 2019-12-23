@@ -32,124 +32,7 @@ import org.apache.commons.mail.MultiPartEmail;
 
 public class SendEmailAtachament {
 
-    public static void sendGRUP(String from, String password, String bcc, String sub, String msg, String filename) throws Exception {
-        //Get properties object    
-        Properties props = new Properties();
-        props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.socketFactory.port", "465");
-        props.put("mail.smtp.socketFactory.class",
-                "javax.net.ssl.SSLSocketFactory");
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.port", "465");
-        //get Session   
-        Session session = Session.getDefaultInstance(props,
-                new javax.mail.Authenticator() {
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(from, password);
-            }
-        });
-        //compose message    
-        try {
-            MimeMessage message = new MimeMessage(session);
-            //message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-            message.addRecipient(Message.RecipientType.BCC, new InternetAddress(bcc));
-
-            message.setSubject(sub);
-            message.setText(msg);
-
-            BodyPart messageBodyPart = new MimeBodyPart();
-
-            messageBodyPart.setText("Raport teste automat");
-
-            Multipart multipart = new MimeMultipart();
-
-            multipart.addBodyPart(messageBodyPart);
-
-            messageBodyPart = new MimeBodyPart();
-
-//             DataSource source = new FileDataSource(filename);
-
-//             messageBodyPart.setDataHandler(new DataHandler(source));
-
-//             messageBodyPart.setFileName(filename);
-
-//             multipart.addBodyPart(messageBodyPart);
-
-//             //message.setContent(multipart);
-//             StringWriter writer = new StringWriter();
-//             IOUtils.copy(new FileInputStream(new File(filename)), writer);
-
-//             message.setContent(writer.toString(), "text/html");
-
-            //send message  
-            Transport.send(message);
-            System.out.println("message sent successfully");
-        } catch (MessagingException e) {
-            throw new RuntimeException(e);
-        }
-
-    }
-
-    public static void SendEmailSephoraPassed(String adresaSephora, String from, String grupTestContent, String grupSephora, String subject, String filename) throws FileNotFoundException, IOException {
-
-        //Get properties object    
-        Properties props = new Properties();
-        props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.socketFactory.port", "465");
-        props.put("mail.smtp.socketFactory.class",
-                "javax.net.ssl.SSLSocketFactory");
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.port", "465");
-        //get Session   
-        Session session = Session.getDefaultInstance(props,
-                new javax.mail.Authenticator() {
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(from, "anda.cristea");
-            }
-        });
-        //compose message    
-        try {
-            MimeMessage message = new MimeMessage(session);
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(grupTestContent));
-            message.addRecipient(Message.RecipientType.BCC, new InternetAddress(grupSephora));
-
-            message.setSubject(subject);
-            // message.setText(msg);
-
-            BodyPart messageBodyPart = new MimeBodyPart();
-
-            messageBodyPart.setText("Raport teste automate");
-
-            Multipart multipart = new MimeMultipart();
-
-            multipart.addBodyPart(messageBodyPart);
-
-            messageBodyPart = new MimeBodyPart();
-
-            DataSource source = new FileDataSource(filename);
-
-            messageBodyPart.setDataHandler(new DataHandler(source));
-
-            messageBodyPart.setFileName(filename);
-
-            multipart.addBodyPart(messageBodyPart);
-
-            message.setContent(multipart);
-
-            //send message  
-            Transport.send(message);
-            //  System.out.println("message sent successfully");
-        } catch (Exception ex) {
-            System.out.println("eroare trimitere email-uri");
-            System.out.println(ex.getMessage());
-
-        }
-
-    }
-
-
-
-    public static void SendEmailPassed(String from, String to1, String subject, String filename) throws FileNotFoundException, IOException {
+   public static void SendEmailPassed(String from, String to1, String subject, String filename) throws FileNotFoundException, IOException {
 
         try {
 
@@ -165,7 +48,7 @@ public class SendEmailAtachament {
             Session session = Session.getDefaultInstance(props,
                     new javax.mail.Authenticator() {
                 protected PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication(from, "andacristea72");
+                    return new PasswordAuthentication(from, "Herculane#2019");
                 }
             });
             //compose message    
@@ -214,65 +97,7 @@ public class SendEmailAtachament {
 
     }
 
-    public static void SendEmailAnda(String from, String to1, String subject, String filename) throws FileNotFoundException, IOException {
-        //Get properties object    
-        Properties props = new Properties();
-        props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.socketFactory.port", "465");
-        props.put("mail.smtp.socketFactory.class",
-                "javax.net.ssl.SSLSocketFactory");
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.port", "465");
-        //get Session   
-        Session session = Session.getDefaultInstance(props,
-                new javax.mail.Authenticator() {
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(from, "anda.cristea");
-            }
-        });
-        //compose message    
-        try {
-            MimeMessage message = new MimeMessage(session);
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(to1));
-
-            message.setSubject(subject);
-            // message.setText(msg);
-
-            BodyPart messageBodyPart = new MimeBodyPart();
-
-            messageBodyPart.setText("Raport teste automate");
-
-            Multipart multipart = new MimeMultipart();
-
-            multipart.addBodyPart(messageBodyPart);
-
-            messageBodyPart = new MimeBodyPart();
-
-            DataSource source = new FileDataSource(filename);
-
-            messageBodyPart.setDataHandler(new DataHandler(source));
-
-            messageBodyPart.setFileName(filename);
-
-            multipart.addBodyPart(messageBodyPart);
-
-            //message.setContent(multipart);
-            
-            StringWriter writer = new StringWriter();
-            IOUtils.copy(new FileInputStream(new File(filename)), writer);
-
-            message.setContent(writer.toString(), "text/html");
-
-            //send message  
-            Transport.send(message);
-
-        } catch (MessagingException e) {
-            throw new RuntimeException(e);
-        }
-
-    }
-
-    public static void SendEmail(String from, String to1, String to2, String subject, String filename) throws FileNotFoundException, IOException {
+  public static void SendEmail(String from, String to1, String to2, String subject, String filename) throws FileNotFoundException, IOException {
 
         try {
 
@@ -287,8 +112,8 @@ public class SendEmailAtachament {
 
             email.setHostName("smtp.gmail.com");
             email.setSmtpPort(465);
-            //email.setAuthenticator(new DefaultAuthenticator("test@contentspeed.ro", "andaanda"));
-            email.setAuthenticator(new DefaultAuthenticator("anda.cristea@contentspeed.ro", "anda.cristea"));
+         
+            email.setAuthenticator(new DefaultAuthenticator("andacristea72@gmail.com", "cwwvzncxvmzsspat"));
             email.setSSLOnConnect(true);
 
             email.addBcc(to1);
@@ -299,11 +124,11 @@ public class SendEmailAtachament {
 
             // add the attachment
             //email.attach(attachment);
-            StringWriter writer = new StringWriter();
-            IOUtils.copy(new FileInputStream(new File(filename)), writer);
+//             StringWriter writer = new StringWriter();
+//             IOUtils.copy(new FileInputStream(new File(filename)), writer);
 
-            email.setContent(writer.toString(), "text/html");
-            email.attach(attachment);
+//             email.setContent(writer.toString(), "text/html");
+//             email.attach(attachment);
 
             // send the email
             email.send();
@@ -324,7 +149,7 @@ public class SendEmailAtachament {
             System.out.println("=======send email start");
 
             // nu a mers 
-            SendEmailSephoraPassedJava("anda72cristea@gmail.com", "andadeacu@yahoo.com", "Teste email-uri Sephora", "");
+           SendEmail("anda72cristea@gmail.com", "andadeacu@yahoo.com", "", "Teste email-uri Gmail", "");
            
 
             System.out.println("=======end email");
