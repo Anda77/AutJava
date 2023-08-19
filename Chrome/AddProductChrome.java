@@ -38,14 +38,7 @@ public class AddProductChrome {
 
             objProdus.Actions("Anda", "Cristea", "andadeacu10@yahoo.com", "0741010736", "observatii test      ", "Bucuresti", "Bucuresti", "strada Fericirii nr. 9");
             
-            
-
-            //objCos = new CosCumparaturi(driver);
-
-            //objCos.Completeaza("Anda", "Cristea", "andadeacu10@yahoo.com", "0741010736", "observatii test      ", "Bucuresti", "Bucuresti", "strada Fericirii nr. 9");
-
-            
-        } catch (WebDriverException ex) {
+            } catch (WebDriverException ex) {
 
             ex.printStackTrace();
             //driver.quit();
