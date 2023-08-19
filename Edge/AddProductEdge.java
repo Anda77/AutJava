@@ -28,13 +28,8 @@ public class AddProductEdge {
     public void AdaugProdusLaCos() {
 
         try {
-
             objProdus = new ProdusCeaiIE11(driver);
-
             objProdus.Actions("Anda", "Cristea", "andadeacu11@yahoo.com", "0741010736", "observatii test      ", "Bucuresti", "Bucuresti", "strada Fericirii nr. 9");
-
-           // objCos = new CosCumparaturi(driver);
-            //  objCos.Completeaza("Anda", "Cristea", "andadeacu11@yahoo.com", "0741010736", "observatii test      ", "Bucuresti", "Bucuresti", "strada Fericirii nr. 9");
         } catch (WebDriverException ex) {
 
             ex.printStackTrace();
