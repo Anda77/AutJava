@@ -35,8 +35,6 @@ public class AddProductIE11 {
 
             objProdus.Actions("Anda", "Cristea", "andadeacu11@yahoo.com", "0741010736", "observatii test      ", "Bucuresti", "Bucuresti", "strada Fericirii nr. 9");
 
-            //objCos = new CosCumparaturi(driver);
-            //objCos.Completeaza();
         } catch (WebDriverException ex) {
 
             ex.printStackTrace();
