@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.contentspeed.automationtesting.Lider.org.contentspeed.automationtesting.Lider.src;
+package org.contentspeed.automationtesting.Lider.src.src;
 
 import org.apache.commons.mail.DefaultAuthenticator;
 import org.apache.commons.mail.EmailAttachment;

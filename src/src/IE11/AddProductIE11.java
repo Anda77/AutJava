@@ -5,8 +5,8 @@
  */
 package IE11;
 
-import org.contentspeed.automationtesting.Lider.org.contentspeed.automationtesting.Lider.src.Constants;
-import org.contentspeed.automationtesting.Lider.org.contentspeed.automationtesting.Lider.src.ProdusCeaiIE11;
+import org.contentspeed.automationtesting.Lider.src.src.Constants;
+import org.contentspeed.automationtesting.Lider.src.src.ProdusCeaiIE11;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.ie.InternetExplorerDriver;

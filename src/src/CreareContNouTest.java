@@ -1,4 +1,4 @@
-package org.contentspeed.automationtesting.Lider.org.contentspeed.automationtesting.Lider.src;
+package org.contentspeed.automationtesting.Lider.src.src;
 
 import frameworkcontentspeed.Lider.CreareContNouPage;
 import frameworkcontentspeed.Lider.DetaliiContPage;

@@ -7,29 +7,39 @@ package frameworkcontentspeed.Lider;
 
 import databaseaccesscontentspeed.UtilsDatabase;
 import frameworkcontentspeed.Utils.BaseTest;
-import static frameworkcontentspeed.Utils.SendEmailAtachament.SendEmail;
-import static frameworkcontentspeed.Utils.SendEmailAtachament.SendEmailPassed;
-import static frameworkcontentspeed.Utils.SendEmailAtachament.SendEmailSephoraFailed;
-import static frameworkcontentspeed.Utils.SendEmailAtachament.SendEmailSephoraPassed;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.IAlterSuiteListener;
-import org.testng.IExecutionListener;
-import org.testng.ISuite;
-import org.testng.ISuiteListener;
-import org.testng.ISuiteResult;
-import org.testng.ITestContext;
-import org.testng.ITestListener;
-import org.testng.ITestResult;
-import org.testng.xml.XmlClass;
-import org.testng.xml.XmlSuite;
-import org.testng.xml.XmlTest;
+
+import static org.contentspeed.automationtesting.Lider.src.src.SendEmailAtachament.*;
 
 public class DotTestListener implements IExecutionListener, ISuiteListener, ITestListener//, IAlterSuiteListener 
 {
 
+    public static List<String> l = null;
+    public String sessionId;
+    String fisierConfigurari;
+    String browser;
+    String osversion;
+    RemoteWebDriver driver;
+    String typeTest = "";
+    String oosversion = "";
+    int failedTests = 0;
+    int totalFailedTests = 0;
+    boolean resultsSuita = true;
+    boolean resultsConfigurations = true;
+    int testfailures;
+    int testSucess;
+    int testSkipped;
+    int totalNumberOfPassedMethodsForSuite = 0;
+    String deviceName = "";
+    int totalfailedConfiguration = 0;
+    String forSephora = "";
+    BaseTest bt;
+    int TotalTC = 0;
     private String URLClient;
     private String tema;
     private String host;
@@ -37,41 +47,7 @@ public class DotTestListener implements IExecutionListener, ISuiteListener, ITes
     private String userdatabaseGeneric;
     private String passdatabaseGeneric;
 
-    String fisierConfigurari;
-    String browser;
-    String osversion;
-    RemoteWebDriver driver;
-    public String sessionId;
-    String typeTest = "";
-    String oosversion = "";
-    int failedTests = 0;
-    int totalFailedTests = 0;
-
-    boolean resultsSuita = true;
-
-    boolean resultsConfigurations = true;
-
-    int testfailures;
-
-    int testSucess;
-
-    int testSkipped;
-
-    int totalNumberOfPassedMethodsForSuite = 0;
-
-    String deviceName = "";
-
-    int totalfailedConfiguration = 0;
-
-    String forSephora = "";
-
-    BaseTest bt;
-
-    int TotalTC = 0;
-
-    public static List<String> l = null;
-
-//    @Override
+    //    @Override
 //    public void alter(List<XmlSuite> suites) {
 //        XmlSuite suite = suites.get(0);
 //        List<XmlTest> tests = suite.getTests();
@@ -128,7 +104,7 @@ public class DotTestListener implements IExecutionListener, ISuiteListener, ITes
 
     }
 
-//    @Override
+    //    @Override
 //    public void alter(List<XmlSuite> suites) {
 //        for (XmlSuite suite : suites) {
 //            List<XmlTest> tests = new ArrayList<>();
