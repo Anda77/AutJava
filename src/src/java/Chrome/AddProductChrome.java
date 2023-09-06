@@ -3,12 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.contentspeed.automationtesting.Lider.Chrome;
+package org.contentspeed.automationtesting.Lider.src.src.Chrome;
 
 
-import org.contentspeed.automationtesting.Lider.org.contentspeed.automationtesting.Lider.src.CosCumparaturi;
-import org.contentspeed.automationtesting.Lider.org.contentspeed.automationtesting.Lider.src.ProdusCeai;
-import org.junit.BeforeClass;
+import org.contentspeed.automationtesting.Lider.src.src.CosCumparaturi;
+import org.contentspeed.automationtesting.Lider.src.src.ProdusCeai;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;

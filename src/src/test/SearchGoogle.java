@@ -1,4 +1,4 @@
-package org.contentspeed.automationtesting.Lider.org.contentspeed.automationtesting.Lider.src;
+package org.contentspeed.automationtesting.Lider.src.src;
 
 import org.junit.*;
 import org.openqa.selenium.*;

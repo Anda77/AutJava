@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.contentspeed.automationtesting.Lider.Edge;
+package org.contentspeed.automationtesting.Lider.src.src.Edge;
 
-import org.contentspeed.automationtesting.Lider.org.contentspeed.automationtesting.Lider.src.Constants;
-import org.contentspeed.automationtesting.Lider.org.contentspeed.automationtesting.Lider.src.ProdusCeaiIE11;
-import org.contentspeed.automationtesting.Lider.org.contentspeed.automationtesting.Lider.src.CosCumparaturi;
+import org.contentspeed.automationtesting.Lider.src.src.Constants;
+import org.contentspeed.automationtesting.Lider.src.src.ProdusCeaiIE11;
+import org.contentspeed.automationtesting.Lider.src.src.CosCumparaturi;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.edge.EdgeDriver;

@@ -5,7 +5,7 @@
  */
 package Firefox;
 
-import org.contentspeed.automationtesting.Lider.org.contentspeed.automationtesting.Lider.src.Constants;
+import org.contentspeed.automationtesting.Lider.src.src.Constants;
 import contentspeed.ProdusCeai;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
